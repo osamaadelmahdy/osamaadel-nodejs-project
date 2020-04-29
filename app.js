@@ -17,7 +17,7 @@ app.use('/', homeRouter)
 app.use('/product', productRouter)
 app.use('/signup', signupRouter)
 app.use('/login', loginRouter)
-
-app.listen(3000, () => {
-    console.log("server is runing on port 3000");
+let port = process.env.PORT | 3000;
+app.listen(port, () => {
+    console.log(`server is runing on port ${port}`);
 });

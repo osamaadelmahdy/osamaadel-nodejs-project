@@ -1,0 +1,25 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+<div class="container">
+    <form action="/signup" method="POST">
+        <h1>Signup</h1>
+        <div class="form-group">
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div>
+        <p class="m-auto">or <a href="./login">logIn</a></p>
+    </div>
+</div>
+
+<%- include('parts/footer') %>

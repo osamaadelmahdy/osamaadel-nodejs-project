@@ -1,0 +1,42 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<div class="container">
+    <form action="/" method="GET">
+        <div class="form-group">
+            <label for="all">
+                <h1>category</h1>
+            </label>
+            <select id="all" class="form-control" name="category">
+                <option>all</option>
+                <option>osama</option>
+                <option>ahmed</option>
+                <option>ali</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <% for(let p of products){ %>
+        <div class="col col-12 col-md-6 col-lg-4 col-xl-3 ">
+
+            <div class="card">
+                <div class="card-body">
+                    <p><%= p.id %> </p>
+                    <h5><a href="/product/<%- p.id %> " class="card-title"><%= p.name %></a></h5>
+                    <p class="card-text"><%= p.price %></p>
+                </div>
+                <div class="card-footer">
+                    <%= p.description %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+
+<%- include('parts/footer') %>

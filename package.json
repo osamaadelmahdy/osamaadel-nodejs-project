@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "",
+  "author": "osama",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -22,6 +22,6 @@
     "nodemon": "^2.0.2"
   },
   "engines": {
-    "node": "10.16.0"
+    "node": "^10.16.0"
   }
 }

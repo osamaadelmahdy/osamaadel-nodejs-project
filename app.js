@@ -12,12 +12,14 @@ const app = express();
 app.use(express.static(path.join(__dirname, "/assets")));
 app.set('view engine', 'ejs');
 app.set("views", "views");
-
-app.use('/', homeRouter)
-app.use('/product', productRouter)
-app.use('/signup', signupRouter)
-app.use('/login', loginRouter)
+app.get('/', function (req, res) {
+    res.send('hi')
+});
+// app.use('/', homeRouter)
+// app.use('/product', productRouter)
+// app.use('/signup', signupRouter)
+// app.use('/login', loginRouter)
 let port = process.env.PORT | 3000;
-app.listen(port, () => {
+app.listen(process.env.PORT | 3000, () => {
     console.log(`server is runing on port ${port}`);
 });

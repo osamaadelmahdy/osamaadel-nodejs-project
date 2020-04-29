@@ -19,7 +19,6 @@ app.get('/', function (req, res) {
 // app.use('/product', productRouter)
 // app.use('/signup', signupRouter)
 // app.use('/login', loginRouter)
-let port = process.env.PORT | 3000;
-app.listen(process.env.PORT | 3000, () => {
-    console.log(`server is runing on port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`server is runing `);
 });

@@ -35,7 +35,11 @@ app.use('/', homeRouter)
 app.use('/product', productRouter)
 app.use('/signup', signupRouter)
 app.use('/login', loginRouter)
-app.use('/logout', logoutRouter);
+app.use('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    })
+})
 
 
 app.listen(3000, (err) => {

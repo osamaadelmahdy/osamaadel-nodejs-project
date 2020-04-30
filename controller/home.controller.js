@@ -3,6 +3,8 @@ const productsModel = require('../model/products.model');
 
 exports.gethome = (req, res) => {
 
+    console.log(req.session.userId);
+
     let q = req.query.category;
     console.log(q);
     if (q == undefined || q == 'all') {

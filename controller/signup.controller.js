@@ -1,5 +1,5 @@
 
-const userModel = require('../model/user.model')
+const userModel = require('../model/user.model');
 
 exports.veiwPage = (req, res) => {
     res.render('signup')

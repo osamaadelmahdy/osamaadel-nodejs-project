@@ -1,26 +1,32 @@
 <%- include('parts/header') %>
 <%- include('parts/navbar') %>
 <div class="container">
-    <form action="/" m>
-        <h1>LogIn </h1>
-        <div class="form-group">
-            <input type="text" class="form-control">
+    <div class="card" style="width: 400px; margin: 100px auto;">
+        <div class="card-body">
+            <form action="/login" method="POST">
+                <h1 style="text-align: center;">LogIn </h1>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="row ">
+                    <Div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary"">Login</button>
+                    </Div>
+                    <div class=" col-sm-3 ">
+                        <button type=" button" class="btn btn-link"><a href="./sig  nup">SignUp</a></button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <input type="email" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control">
-        </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
+
 </div>
 
 <%- include('parts/footer') %>

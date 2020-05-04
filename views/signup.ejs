@@ -37,6 +37,17 @@
     </div>
 
 
+
+    <% validationResult.forEach(element => { %>
+    <div class="alert alert-danger" role="alert">
+
+        <%= element.msg %>
+
+    </div>
+    <% }); %>
+
+
+
 </div>
 
 <%- include('parts/footer') %>

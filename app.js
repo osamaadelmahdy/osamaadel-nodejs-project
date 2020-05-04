@@ -5,7 +5,6 @@ const homeRouter = require('./routes/home.route');
 const productRouter = require('./routes/product.route');
 const signupRouter = require('./routes/signup.route')
 const loginRouter = require('./routes/login.route')
-const logoutRouter = require('./routes/logout.route')
 
 const expressSession = require('express-session');
 const sessionStore = require("connect-mongodb-session")(expressSession);

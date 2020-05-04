@@ -2,8 +2,10 @@
 const loginController = require('../controller/login.controller')
 const router = require('express').Router();
 const bodyParser = require("body-parser");
+const authcontroller = require('../controller/auth.controller');
 
-router.get('/', loginController.getVeiw);
+
+router.get('/', authcontroller.isauth_denay, loginController.getVeiw);
 
 router.post('/', bodyParser.urlencoded({ extended: true }), loginController.login)
 

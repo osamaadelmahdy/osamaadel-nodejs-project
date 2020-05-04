@@ -1,6 +1,13 @@
 <%- include('parts/header') %>
 <%- include('parts/navbar') %>
 <div class="container">
+
+    <% if (authErr) { %>
+    <div class="alert alert-danger" role="alert">
+        <%= authErr %>
+    </div>
+    <% } %>
+
     <div class="card" style="width: 400px; margin: 100px auto;">
         <div class="card-body">
             <form action="/login" method="POST">

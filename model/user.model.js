@@ -68,8 +68,8 @@ exports.logIn = (userData) => {
 
                             reject('password don\'t match')
                         }
-                    }).catch((err) => { reject(err) })
-            }).catch((err) => { reject(err); })
+                    }).catch((err) => { reject("compare error " + err) })
+            }).catch((err) => { reject("do not find user" + err); })
         })
     });
 

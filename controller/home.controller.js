@@ -2,11 +2,15 @@ const productsModel = require('../model/products.model');
 
 
 exports.gethome = (req, res) => {
+    if (req.session.userId) {
+        console.log(req.session.userId);
+    } else {
+        console.log('notAuth')
+    }
 
-    console.log(req.session.userId);
 
     let q = req.query.category;
-    console.log(q);
+    // console.log(q);
     if (q == undefined || q == 'all') {
 
         productsModel.getAllProducts().then((products) => {

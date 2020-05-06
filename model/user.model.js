@@ -6,7 +6,11 @@ const db_url = 'mongodb://localhost:27017/online-shop';
 const userSchema = mongoose.Schema({
     name: String,
     email: String,
-    password: String
+    password: String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 
 })
 

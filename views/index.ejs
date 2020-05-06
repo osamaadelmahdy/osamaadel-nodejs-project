@@ -19,18 +19,29 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row ">
         <% for(let p of products){ %>
         <div class="col col-12 col-md-6 col-lg-4 col-xl-3 ">
 
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     <p><%= p.id %> </p>
                     <h5><a href="/product/<%- p.id %> " class="card-title"><%= p.name %></a></h5>
                     <p class="card-text"><%= p.price %></p>
-                </div>
-                <div class="card-footer">
+
                     <%= p.description %>
+
+                    <% if (userid && !isAdmin) { %>
+                    <form action="/cart" method="POST">
+                        <input type="number" name="amount" class="form-control">
+                        <input type="hidden" name="name" value="<%= p.name %> ">
+                        <input type="hidden" name="price" value="<%= p.price %> ">
+                        <input type="hidden" name="productId" value="<%= p.id %> ">
+                        <input type="submit" value="Add to cart" class="btn btn-primary">
+                    </form>
+                    <% } %>
+
+
                 </div>
             </div>
         </div>

@@ -4,7 +4,9 @@ const validationResult = require('express-validator').validationResult;
 
 exports.veiwPage = (req, res) => {
     res.render('signup', {
-        validationResult: req.flash('validationResult')
+        validationResult: req.flash('validationResult'),
+        userid: req.session.userId,
+        isAdmin: req.session.isAdmin
     })
 }
 

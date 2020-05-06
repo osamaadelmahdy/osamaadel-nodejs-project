@@ -3,6 +3,7 @@ const productsModel = require('../model/products.model');
 
 exports.gethome = (req, res) => {
     if (req.session.userId) {
+        console.log("."); console.log("."); console.log("."); console.log("."); console.log(".");
         console.log(req.session.userId);
     } else {
         console.log('notAuth')
@@ -15,12 +16,14 @@ exports.gethome = (req, res) => {
 
         productsModel.getAllProducts().then((products) => {
             res.render('index', {
-                products: products
+                products: products,
+                userid: req.session.userId,
+                isAdmin: req.session.isAdmin
             })
         })
     } else if (q) {
         productsModel.getProductsByCategory(q).then((products) => {
-            res.render('index', { products: products });
+            res.render('index', { products: products, userid: req.session.userId, isAdmin: req.session.isAdmin });
         })
     }
 

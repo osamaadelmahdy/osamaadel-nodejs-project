@@ -10,12 +10,16 @@
                 <li class="nav-item">
                     <a href="/" class="nav-link">Home </a>
                 </li>
+
+
+                <% if (userid && !isAdmin) { %>
                 <li class="nav-item">
                     <a href="/cart" class="nav-link ">cart </a>
                 </li>
                 <li class="nav-item">
                     <a href="/orders" class="nav-link">orders</a>
                 </li>
+                <% } else if (!userid && !isAdmin) { %>
 
                 <li class="nav-item">
                     <a href="/login" class="nav-link">login</a>
@@ -24,16 +28,24 @@
                 <li class="nav-item">
                     <a href="/signup" class="nav-link">signup</a>
                 </li>
+                <% } %>
 
+                <% if (isAdmin) { %>
                 <li class="nav-item">
                     <a href="/admin/add" class="nav-link ">add product</a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/manage" class="nav-link ">manage orders</a>
                 </li>
+                <% } %>
+
+
+                <% if (userid || isAdmin) { %>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link btn btn-danger">Logout</a>
                 </li>
+                <% } %>
+
 
 
             </ul>

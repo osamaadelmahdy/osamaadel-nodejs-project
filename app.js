@@ -5,6 +5,8 @@ const homeRouter = require('./routes/home.route');
 const productRouter = require('./routes/product.route');
 const signupRouter = require('./routes/signup.route')
 const loginRouter = require('./routes/login.route')
+const cartRouter = require('./routes/cart.route')
+const adminRouter = require('./routes/admin.route')
 
 const expressSession = require('express-session');
 const sessionStore = require("connect-mongodb-session")(expressSession);
@@ -40,6 +42,8 @@ app.use('/logout', (req, res) => {
     })
 })
 
+app.use('/cart', cartRouter)
+app.use('/admin', adminRouter)
 
 app.listen(3000, (err) => {
     console.log(`server is running `);

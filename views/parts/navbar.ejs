@@ -39,17 +39,28 @@
                 </li>
                 <% } %>
 
-
-                <% if (userid || isAdmin) { %>
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link btn btn-danger">Logout</a>
-                </li>
-                <% } %>
-
-
-
             </ul>
+            <% if (userid || isAdmin) { %>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item  ">
+                        <a href="/logout" class="nav-link btn btn-danger m-1">Logout</a>
+                    </li>
+                    <li class="nav-item  mx-3" style=" padding: 10px 0;">
+                        <img src="/img/u.png" alt="person" style="width: 30px; height: 30px;">
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <% } %>
+
+
+
+
         </div>
     </div>
+
 
 </nav>

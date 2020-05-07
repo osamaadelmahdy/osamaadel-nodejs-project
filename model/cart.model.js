@@ -9,6 +9,10 @@ const cartSchema = mongoose.Schema({
     price: Number,
     image: String,
     amount: Number,
+    status: {
+        type: String,
+        default: "ordered"
+    },
     userId: String,
     productId: String,
     timestamp: Number
@@ -117,6 +121,24 @@ exports.remove = data => {
     })
 }
 
+exports.editStatus = (id, stutas) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(db_url)
+            .then(() => {
+                cartItem.findByIdAndUpdate({ _id: id }, { status: stutas })
+                    .then((carts) => {
+                        mongoose.disconnect();
+                        resolve(carts);
+                    }).catch((err) => {
+                        mongoose.disconnect();
+                        reject(err);;
+                    })
+            }).catch((err) => {
+                mongoose.disconnect();
+                reject(err);;
+            })
+    })
+}
 
 
 

@@ -29,7 +29,7 @@
 
                     <img src="img/<%= p.image %>" alt="" style="max-height: 170px;max-width: 225px;">
                     <h5> <a href="/product/<%= p.id %> " class="card-title"><%= p.name %></a></h5>
-                    <p class="card-text">price: <%= p.price %></p>
+                    <p class="card-text">price: <%= p.price %> per KG</p>
 
                     <%= p.description %>
 
@@ -43,7 +43,14 @@
                         <input type="hidden" name="productId" value="<%= p.id %> ">
                         <div class="row">
                             <div class="col-6">
-                                <input type="number" name="amount" class="form-control">
+                                <div class="row">
+                                    <div class="col-8" style="padding: 5px;">
+                                        <input type="number" name="amount" class="form-control">
+                                    </div>
+                                    <div class="col-4" style="padding: 10px 0;">
+                                        <p> KG</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <input type="submit" value="Add to cart" class="btn btn-primary">

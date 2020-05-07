@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const multer = require('multer');
+const bodyParser = require('body-parser');
+
 
 const adminController = require('../controller/admin.controller')
 
@@ -18,5 +20,6 @@ router.post('/add',
     }).single('image'), adminController.addProuduct)
 
 router.get('/manage', adminController.getOrdersView)
+router.post('/manage/edit', bodyParser.urlencoded({ extended: true }), adminController.editStatus)
 
 module.exports = router;

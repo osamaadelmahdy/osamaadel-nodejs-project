@@ -9,11 +9,12 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <img style="height: 50px;" src="img/<%= item.image %>">
                 <%= item.name %>
-                <p style="width: 50px;"><%= item.amount %></p>
-                <span class="badge badge-primary badge-pill">total: <%= item.amount*item.price %></span>
+                <p style="width: 50px;"><%= item.amount %> KG</p>
+                <span class="badge badge-primary badge-pill">Total: <%= item.amount*item.price %> LE</span>
+                <span class="badge badge-success badge-pill">Status: <%= item.status %></span>
                 <form action="cart/remove" method="post">
                     <input type="hidden" name="id" value="<%= item.id %>">
-                    <input type="submit" class="btn-sm btn btn-danger" value="remove">
+                    <input type="submit" class="btn-sm btn btn-danger" value="Remove">
                 </form>
             </li>
             <% } %>

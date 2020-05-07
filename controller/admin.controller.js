@@ -26,3 +26,10 @@ exports.getOrdersView = (req, res) => {
     })
 
 }
+
+exports.editStatus = (req, res) => {
+    console.log(req.body.id)
+    cartModel.editStatus(req.body.id, req.body.status).then(() => {
+        res.redirect('/admin/manage');
+    })
+}

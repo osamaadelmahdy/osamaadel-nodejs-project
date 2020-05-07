@@ -1,6 +1,33 @@
 <%- include('parts/header') %>
 <%- include('parts/navbar') %>
 
-manage orders
+<div class="container">
+    <div class="row ">
+
+
+
+
+
+        <h1 style="width: 50px;"><%= usersId %></h1>
+
+
+
+        <ul class="list-group" style="width: 100%;">
+            <% for(let item of cart){ %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                <img style="height: 50px;" src="/img/<%= item.image %>">
+                <%= item.name %>
+                <p style="width: 50px;"><%= item.amount %></p>
+
+
+                <span class="badge badge-primary badge-pill">total: <%= item.amount*item.price %></span>
+
+            </li>
+            <% } %>
+        </ul>
+
+    </div>
+</div>
 
 <%- include('parts/footer') %>

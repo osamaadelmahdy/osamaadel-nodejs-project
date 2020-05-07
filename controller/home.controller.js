@@ -9,21 +9,28 @@ exports.gethome = (req, res) => {
         console.log('notAuth')
     }
 
-
     let q = req.query.category;
     // console.log(q);
     if (q == undefined || q == 'all') {
 
         productsModel.getAllProducts().then((products) => {
+            console.log(req.query.category)
             res.render('index', {
                 products: products,
                 userid: req.session.userId,
-                isAdmin: req.session.isAdmin
+                isAdmin: req.session.isAdmin,
+                category: req.query.category
             })
         })
     } else if (q) {
+        console.log(q)
         productsModel.getProductsByCategory(q).then((products) => {
-            res.render('index', { products: products, userid: req.session.userId, isAdmin: req.session.isAdmin });
+            res.render('index', {
+                products: products,
+                userid: req.session.userId,
+                isAdmin: req.session.isAdmin,
+                category: req.query.category
+            });
         })
     }
 

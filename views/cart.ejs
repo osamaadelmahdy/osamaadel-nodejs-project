@@ -3,18 +3,22 @@
 
 <div class="container">
     <div class="row ">
-        <% for(let item of cart){ %>
-        <div class="col col-12 col-md-6 col-lg-4 col-xl-3 ">
 
-            <div class="card mt-3">
-                <div class="card-body">
-                    <h5 class="card-title"><%= item.name %></h5>
-                    <p class="card-text">price: <%= item.price %></p>
-                    <p class="card-text">amount: <%= item.amount %></p>
-                </div>
-            </div>
-        </div>
-        <% } %>
+        <ul class="list-group" style="width: 100%;">
+            <% for(let item of cart){ %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <img style="height: 50px;" src="img/<%= item.image %>">
+                <%= item.name %>
+                <p style="width: 50px;"><%= item.amount %></p>
+                <span class="badge badge-primary badge-pill">total: <%= item.amount*item.price %></span>
+                <form action="cart/remove" method="post">
+                    <input type="hidden" name="id" value="<%= item.id %>">
+                    <input type="submit" class="btn-sm btn btn-danger" value="remove">
+                </form>
+            </li>
+            <% } %>
+        </ul>
+
     </div>
 </div>
 

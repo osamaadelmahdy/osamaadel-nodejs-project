@@ -15,6 +15,7 @@ exports.postCart = (req, res) => {
         cartModel.addNewItem({
             name: req.body.name,
             price: req.body.price,
+            image: req.body.image,
             amount: req.body.amount,
             userId: req.session.userId,
             productId: req.body.productId,
@@ -29,3 +30,18 @@ exports.postCart = (req, res) => {
 
 
 }
+
+exports.editCart = (req, res) => {
+    cartModel.edit(req.body).then(() => {
+        res.redirect('/cart')
+    }).catch((err) => "edit error" + err)
+
+}
+exports.removeCart = (req, res) => {
+    cartModel.remove(req.body).then(() => {
+        res.redirect('/cart')
+    })
+}
+
+
+

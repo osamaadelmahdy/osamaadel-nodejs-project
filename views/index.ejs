@@ -8,10 +8,11 @@
                 <h1>category</h1>
             </label>
             <select id="all" class="form-control" name="category">
+
                 <option>all</option>
-                <option>osama</option>
-                <option>ahmed</option>
-                <option>ali</option>
+                <option>khdar</option>
+                <option>fawakeh</option>
+
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -25,19 +26,30 @@
 
             <div class="card mt-3">
                 <div class="card-body">
-                    <p><%= p.id %> </p>
-                    <h5><a href="/product/<%- p.id %> " class="card-title"><%= p.name %></a></h5>
-                    <p class="card-text"><%= p.price %></p>
+
+                    <img src="img/<%= p.image %>" alt="" style="max-height: 170px;max-width: 225px;">
+                    <h5> <a href="/product/<%= p.id %> " class="card-title"><%= p.name %></a></h5>
+                    <p class="card-text">price: <%= p.price %></p>
 
                     <%= p.description %>
 
+
                     <% if (userid && !isAdmin) { %>
                     <form action="/cart" method="POST">
-                        <input type="number" name="amount" class="form-control">
+
                         <input type="hidden" name="name" value="<%= p.name %> ">
                         <input type="hidden" name="price" value="<%= p.price %> ">
+                        <input type="hidden" name="image" value="<%= p.image %>">
                         <input type="hidden" name="productId" value="<%= p.id %> ">
-                        <input type="submit" value="Add to cart" class="btn btn-primary">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="number" name="amount" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <input type="submit" value="Add to cart" class="btn btn-primary">
+                            </div>
+                        </div>
+
                     </form>
                     <% } %>
 

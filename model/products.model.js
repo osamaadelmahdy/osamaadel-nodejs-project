@@ -22,11 +22,11 @@ exports.addProduct = (productData) => {
         mongoose.connect(db_url).then(() => {
             console.log("add product connect to database...")
             let p = new product({
-                name: productData.name,
-                image: productData.image,
-                price: productData.price,
-                description: productData.description,
-                category: productData.category
+                name: productData.body.name,
+                image: productData.file.filename,
+                price: productData.body.price,
+                description: productData.body.description,
+                category: productData.body.category
             }).save().then((products) => {
                 mongoose.disconnect();
                 resolve(products);
@@ -55,7 +55,7 @@ exports.getAllProducts = () => {
 exports.getProductsByCategory = (q) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(db_url).then(() => {
-            product.find({ name: q }).then((products) => {
+            product.find({ category: q }).then((products) => {
                 mongoose.disconnect();
                 resolve(products);
             })

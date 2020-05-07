@@ -1,4 +1,5 @@
 const productsModel = require('../model/products.model');
+const cartModel = require('../model/cart.model');
 
 exports.getView = (req, res, next) => {
     res.render('addproduct', {
@@ -8,15 +9,20 @@ exports.getView = (req, res, next) => {
 }
 
 exports.addProuduct = (req, res, next) => {
-    productsModel.addProduct(req.body).then((i) => {
+    productsModel.addProduct(req).then((i) => {
         console.log("product added ", i)
         res.redirect('/')
     })
 }
 
 exports.getOrdersView = (req, res) => {
-    res.render('orders', {
-        userid: req.session.userId,
-        isAdmin: req.session.isAdmin
+    cartModel.getCartToAdmin().then((data, id) => {
+        res.render('orders', {
+            cart: data,
+            usersId: id,
+            userid: req.session.userId,
+            isAdmin: req.session.isAdmin
+        })
     })
+
 }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+ObjectId = require('mongodb').ObjectID;
 
 const db_url = 'mongodb://localhost:27017/online-shop';
 
@@ -78,4 +79,20 @@ exports.logIn = (userData) => {
     });
 
 }
+usersName = [];
+exports.findIds = (ids) => {
+    console.log(ids);
+    return new Promise((resolve, reject) => {
+        mongoose.connect(db_url).then(() => {
+            console.log("connect to db find ids");
+            ids.forEach(element => {
+                User.find({ _id: element })
+                    .then((user) => { usersName.push(user.name) })
+                    .catch((err) => { reject("compare error " + err) })
+            })
+            console.log('usersname', usersName)
+            resolve(usersName);
+        }).catch((err) => { reject("do not find user" + err); })
+    })
 
+}

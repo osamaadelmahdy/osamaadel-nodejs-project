@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const userModel = require('../model/user.model');
 
 
 const db_url = 'mongodb://localhost:27017/online-shop';
@@ -6,6 +7,7 @@ const db_url = 'mongodb://localhost:27017/online-shop';
 const cartSchema = mongoose.Schema({
     name: String,
     price: Number,
+    image: String,
     amount: Number,
     userId: String,
     productId: String,
@@ -58,3 +60,63 @@ exports.getcart = id => {
             })
     })
 }
+ids = [];
+usersIds = [];
+exports.getCartToAdmin = data => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(db_url)
+            .then(() => {
+                console.log("connect to cart data 'getCartToAdmin'")
+                cartItem.find({})
+                    .then((carts) => {
+                        console.log(carts);
+                        carts.forEach(element => {
+                            ids.push(element.userId);
+                        });
+                        console.log(ids);
+                        for (let i = 0; i < ids.length; i++) {
+                            if (ids[i] == ids[i - 1]) { } else {
+                                usersIds.push(ids[i])
+                            }
+                        }
+                        console.log(usersIds);
+                        userModel.findIds(usersIds).then((usersId) => {
+                            console.log("getCartToAdmin ", carts)
+                            mongoose.disconnect();
+                            resolve(carts, usersId);
+                        })
+                    }).catch((err) => {
+                        mongoose.disconnect();
+                        reject(err);;
+                    })
+            }).catch((err) => {
+                mongoose.disconnect();
+                reject(err);;
+            })
+    })
+}
+
+exports.remove = data => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(db_url)
+            .then(() => {
+                console.log("connect to cart data 'edit card'")
+                cartItem.findOneAndRemove({ _id: data.id })
+                    .then((carts) => {
+                        console.log("cart removed ", carts)
+                        mongoose.disconnect();
+                        resolve(carts);
+                    }).catch((err) => {
+                        mongoose.disconnect();
+                        reject(err);;
+                    })
+            }).catch((err) => {
+                mongoose.disconnect();
+                reject(err);;
+            })
+    })
+}
+
+
+
+

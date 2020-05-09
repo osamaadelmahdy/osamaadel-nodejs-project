@@ -5,7 +5,8 @@ exports.getProduct = (req, res) => {
     productsModel.getProductById(id).then((product) => {
         res.render('product', {
             product: product,
-            userid: req.session.userId
+            userid: req.session.userId,
+            isAdmin: req.session.isAdmin
         })
     })
 }

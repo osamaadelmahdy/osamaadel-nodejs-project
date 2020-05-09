@@ -46,5 +46,5 @@ app.use('/cart', cartRouter)
 app.use('/admin', adminRouter)
 
 app.listen(3000, (err) => {
-    console.log(`server is running `);
+    console.log(`server is running on port 3000 `);
 });
